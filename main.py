@@ -51,6 +51,14 @@ while True:
         break
     except ValueError as e:
         print(e)
+while True:
+    repeat_password = get_input("Repeat your password")
+    if password == repeat_password:
+        break
+    else:
+        print("Пароли не совпадают. Попробуйте еще раз.")
+if not first_name or not last_name or not gender or not email or not password or not repeat_password or not login:
+    raise ValueError("Все поля являются обязательными.")
 user_data = {
     "first_name": first_name,
     "last_name": last_name,
