@@ -30,11 +30,11 @@ def validate_password(password):
         return password
 
 
-def validate_name(name):
-    if len(name) > 50 or not name.isalpha():
+def validate_name(field):
+    if len(field) > 50 or not field.isalpha():
         raise ValueError("Поле может содержать только буквы и не может быть длинее 50 символов.")
     else:
-        return name
+        return field
 
 
 def validate_birth_date(birth_date_str):
@@ -61,7 +61,13 @@ while True:
         break
     except ValueError as e:
         print(e)
-city = get_input("Введите город")
+while True:
+    city = get_input("Введите город")
+    try:
+        city = validate_name(city)
+        break
+    except ValueError as e:
+        print(e)
 while True:
     birth_date_str = get_input("Введите свою дату рождения (ДД-ММ-ГГГГ)")
     try:
