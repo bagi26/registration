@@ -28,6 +28,13 @@ def validate_password(password):
         return password
 
 
+def validate_name(name):
+    if len(name) > 50 or not name.isalpha():
+        raise ValueError("Поле может содержать только буквы и не может быть длинее 50 символов.")
+    else:
+        return name
+
+
 def validate_birth_date(birth_date_str):
     try:
         birth_date = datetime.strptime(birth_date_str, "%d-%m-%Y")
@@ -38,8 +45,20 @@ def validate_birth_date(birth_date_str):
         raise ValueError("Неверный формат даты. Используйте ДД-ММ-ГГГГ.")
 
 
-first_name = get_input("Введите имя")
-last_name = get_input("Введите фамилию")
+while True:
+    first_name = get_input("Введите имя")
+    try:
+        first_name = validate_name(first_name)
+        break
+    except ValueError as e:
+        print(e)
+while True:
+    last_name = get_input("Введите фамилию")
+    try:
+        last_name = validate_name(last_name)
+        break
+    except ValueError as e:
+        print(e)
 city = get_input("Введите город")
 while True:
     birth_date_str = get_input("Введите свою дату рождения (ДД-ММ-ГГГГ)")
