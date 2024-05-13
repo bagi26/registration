@@ -52,7 +52,7 @@ while True:
     except ValueError as e:
         print(e)
 while True:
-    repeat_password = get_input("Repeat your password")
+    repeat_password = get_input("Повторите пароль")
     if password == repeat_password:
         break
     else:
