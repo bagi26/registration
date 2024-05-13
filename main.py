@@ -60,12 +60,12 @@ while True:
 if not first_name or not last_name or not gender or not email or not password or not repeat_password or not login:
     raise ValueError("Все поля являются обязательными.")
 user_data = {
-    "first_name": first_name,
-    "last_name": last_name,
-    "gender": gender,
-    "email": email,
-    "login": login,
-    "password": password
+    "Имя": first_name,
+    "Фамилия": last_name,
+    "Пол": gender,
+    "Электронная почта": email,
+    "Логин": login,
+    "Пароль": password
 }
 print("\nИнформация по пользователю:")
 for key, value in user_data.items():
