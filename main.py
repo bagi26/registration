@@ -1,4 +1,5 @@
 import re
+from datetime import datetime
 
 
 def get_input(prompt):
@@ -21,16 +22,32 @@ def validate_email(email):
 
 
 def validate_password(password):
-    if len(password) < 8:
-        raise ValueError("Пароль должен быть длиной минимум 8 символов.")
+    if len(password) < 6:
+        raise ValueError("Пароль должен быть длиной минимум 6 символов.")
     else:
         return password
+
+
+def validate_birth_date(birth_date_str):
+    try:
+        birth_date = datetime.strptime(birth_date_str, "%d-%m-%Y")
+        if birth_date > datetime.now():
+            raise ValueError("Дата рождения не может быть болльше текущей даты")
+        return birth_date.strftime("%d-%m-%Y")
+    except ValueError:
+        raise ValueError("Неверный формат даты. Используйте ДД-ММ-ГГГГ.")
 
 
 first_name = get_input("Введите имя")
 last_name = get_input("Введите фамилию")
 city = get_input("Введите город")
-birth_date = get_input("Введите дату рождения")
+while True:
+    birth_date_str = get_input("Введите свою дату рождения (ДД-ММ-ГГГГ)")
+    try:
+        birth_date = validate_birth_date(birth_date_str)
+        break
+    except ValueError as e:
+        print(e)
 while True:
     gender = get_input("Введите пол (М/Ж)")
     try:
