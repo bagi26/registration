@@ -67,7 +67,9 @@ user_data = {
     "Пол": gender,
     "Электронная почта": email,
     "Логин": login,
-    "Пароль": password
+    "Пароль": password,
+    "Город": city,
+    "Дата рождения": birth_date
 }
 print("\nИнформация по пользователю:")
 for key, value in user_data.items():
