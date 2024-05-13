@@ -29,6 +29,8 @@ def validate_password(password):
 
 first_name = get_input("Введите имя")
 last_name = get_input("Введите фамилию")
+city = get_input("Введите город")
+birth_date = get_input("Введите дату рождения")
 while True:
     gender = get_input("Введите пол (М/Ж)")
     try:
