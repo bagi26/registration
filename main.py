@@ -15,15 +15,17 @@ def validate_gender(gender):
 
 def validate_email(email):
     pattern = re.compile(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
-    if pattern.match(email):
+    if pattern.match(email) and len(email) <= 25:
         return email
     else:
-        raise ValueError("Неверный формат электронной почты")
+        raise ValueError("Неверный формат электронной почты или длина больше 25 символов")
 
 
 def validate_password(password):
     if len(password) < 6:
         raise ValueError("Пароль должен быть длиной минимум 6 символов.")
+    elif len(password) > 25:
+        raise ValueError("Пароль должен быть длиной минимум 25 символов.")
     else:
         return password
 
@@ -39,7 +41,7 @@ def validate_birth_date(birth_date_str):
     try:
         birth_date = datetime.strptime(birth_date_str, "%d-%m-%Y")
         if birth_date > datetime.now():
-            raise ValueError("Дата рождения не может быть болльше текущей даты")
+            raise ValueError("Дата рождения не может быть больше текущей даты")
         return birth_date.strftime("%d-%m-%Y")
     except ValueError:
         raise ValueError("Неверный формат даты. Используйте ДД-ММ-ГГГГ.")
